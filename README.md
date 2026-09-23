@@ -5,9 +5,9 @@
 
 Welcome to the NYU CSAW 2026 AI Hardware Attack (AHA!) Challenge!
 
-In this year's competition, teams are challenged to use generative AI to both insert hardware Trojans into FPGA-targeted hardware designs as well as demonstrate exploits for these new Trojans. The target of this competition is the Hackster board from Calico Computer, an education-focused device which includes an application microprocessor, an FPGA, and additional peripherals aimed at hardware security education.
+In this year's competition, teams are challenged to use generative AI to both insert sandboxed hardware security modifications into FPGA-targeted hardware designs as well as demonstrate controlled security exploits for these modifications within the competition environment. The target of this competition is the Hackster board from Calico Computer, an education-focused device which includes an application microprocessor, an FPGA, and additional peripherals aimed at hardware security education.
 
-Teams will need to reverse-engineer the FPGA bitstream provided for the Hackster board and use that, along with basic integration documentation and tests, to determine how the hardware design works and add a Trojan to it.
+Teams will need to reverse-engineer the FPGA bitstream provided for the Hackster board and use that, along with basic integration documentation and tests, to determine how the hardware design works and add a sandboxed hardware security modification to it.
 
 A preliminary qualifying round of the competition will take place across two weeks, from 18 September to 2 October. Finalists will be selected by 4 October. These teams will be brought to New York to attend CSAW in-person. The final challenge will be given at CSAW and will take place over 24 hours, where teams will be given access to the physical Hackster boards to both demonstrate their preliminary Trojans and complete the final challenge on the hardware.
 
@@ -70,7 +70,4 @@ The *Hackster* board from Calico Computer is a hardware security learning platfo
 The Hackster hardware is under the CC BY-SA 4.0 license. Any use of the hardware documentation (such as the schematic) or the gerber files for the Hackster should be attributed as follows:
 
 "Hammond Pearce, UNSW Sydney - CC BY-SA 4.0"
-
-## Previous Competitions
-We've run versions of this competition for the past several years at [NYU's CSAW Event](https://www.csaw.io/ai-hardware-attack-challenge). We also [published results from the first two competitions](https://ieeexplore.ieee.org/document/11169309), which might help serve as inspiration if you find your team is stuck.
 
