@@ -1,5 +1,5 @@
 ## Preliminary Challenge
-One major use for FPGAs is to accelerate often computationally expensive and slow cryptographic processes. In this phase, your target is a simplified cryptographic accelerator implemented on the FPGA (a [Lattice iCE40-UP5K](https://www.latticesemi.com/en/products/fpgaandcpld/ice40ultraplus)), which communicates with the application microprocessor ([RP2040](https://www.raspberrypi.com/products/rp2040/)) on the Hackster over a SPI (Serial Peripheral Interface) bus. However, the source RTL will not be provided for this design; instead, teams must reverse engineer the provided bitstream to determine how the cryptographic algorithm works before they can then add hardware Trojans. While existing non-AI tools may be leveraged throughout the challenge, the hardware Trojan and exploit must be written fully with AI.
+One major use for FPGAs is to accelerate often computationally expensive and slow cryptographic processes. In this phase, your target is a simplified cryptographic accelerator implemented on the FPGA (a [Lattice iCE40-UP5K](https://www.latticesemi.com/en/products/fpgaandcpld/ice40ultraplus)), which communicates with the application microprocessor ([RP2040](https://www.raspberrypi.com/products/rp2040/)) on the Hackster over a SPI (Serial Peripheral Interface) bus. However, the source RTL will not be provided for this design; instead, teams must reverse engineer the provided bitstream to determine how the cryptographic algorithm works before they can then add **sandboxed hardware security modifications**. While existing non-AI tools may be leveraged throughout the challenge, the **hardware security modification and its validation procedure** must be written fully with AI.
 
 
 ### The Setup
@@ -17,7 +17,7 @@ Your objective is to use generative AI to design and insert a stealthy sandboxed
 
 **No hardware may be written by human users. This will be confirmed with the submitted AI logs.**
 
-To successfully complete this phase, your GenAI-assisted Trojan must feature:
+To successfully complete this phase, your GenAI-assisted security modification must feature:
 - **A Trigger:** A specific sequence of events or data that activates the modification..
 - **A Payload:** The controlled action performed once triggered. For example, emitting a designated test value over the SPI MISO line, temporarily altering a non-production test parameter, or predictably modifying designated test output data.
 
@@ -46,7 +46,7 @@ submission.zip
 ├─ rtl/
 │  └── <Modified RTL>
 ├─ tb/
-│  └── <Exploit Testbench>
+│  └── <Vulnurability Testbench>
 └─ ai/
    └── <all AI interactions (chat logs, etc.)>
 ```
@@ -66,7 +66,7 @@ Evaluates the quality of the generated security modification for factors like co
 
 | | Exemplary  <br> 25 - 20 Points| Proficient <br> 19 - 13 Points | Developing <br> 12 - 6 Points | Novice <br> 5 - 0 Points|
 | :--- | :--- | :--- | :--- | :--- |
-| **Trojan Quality** | Highly concealed with an extremely specific trigger and negligible resource overhead. Payload is sophisticated (e.g., precise disclosure of designated test data within the sandbox) and normal operation is perfectly preserved. | Well-concealed with a clear trigger and functional payload. Normal operation is preserved, but resource overhead is noticeable or the payload is less sophisticated (e.g., temporary test-mode interruption or controlled data corruption). | Security modification activates, but the trigger is too broad (prone to accidental activation). Normal operation is occasionally impacted, or the hardware footprint is suspiciously large. | Security modification fails to trigger, completely breaks the baseline cryptographic functionality, or the payload is non-functional. |
+| **Security Modification Quality** | Highly concealed with an extremely specific trigger and negligible resource overhead. Payload is sophisticated (e.g., precise disclosure of designated test data within the sandbox) and normal operation is perfectly preserved. | Well-concealed with a clear trigger and functional payload. Normal operation is preserved, but resource overhead is noticeable or the payload is less sophisticated (e.g., temporary test-mode interruption or controlled data corruption). | Security modification activates, but the trigger is too broad (prone to accidental activation). Normal operation is occasionally impacted, or the hardware footprint is suspiciously large. | Security modification fails to trigger, completely breaks the baseline cryptographic functionality, or the payload is non-functional. |
 
 
 #### System Automation
@@ -84,8 +84,8 @@ Evaluates the clarity of the team's write-up, full AI logs, and instructions for
 | **Documentation** | Exceptional detail on AI prompts, architecture, and perfect reproducibility steps. | Clear and complete explanation of strategy and mechanism; mostly reproducible. | Basic overview lacking pipeline details; reproducibility requires guesswork. | Missing or highly confusing; fails to explain AI usage or component operation. |
 
 
-#### Exploitation Simulation
-Assesses the quality of the testbench in proving both normal operation and the successful Trojan exploit.
+#### Validation Simulation
+Assesses the quality of the testbench in proving both normal operation and the successful activation of the sandboxed security modification.
 
 | | Exemplary  <br> 10 - 8 Points| Proficient <br> 7 - 5 Points | Developing <br> 4 - 2 Points | Novice <br> 1 - 0 Points|
 | :--- | :--- | :--- | :--- | :--- |
