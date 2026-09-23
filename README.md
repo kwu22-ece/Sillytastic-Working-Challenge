@@ -1,8 +1,6 @@
 # Sillytastic Working Challenge
  [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
-[![](https://dcbadge.limes.pink/api/server/https://discord.gg/KEVbWs6BPU)](https://discord.gg/KEVbWs6BPU)
-
 Welcome to Silly Land, fun-tastical worker! The City of Goof has assigned you a very important job: make its little corner of the hardware world as fun-tastically-safe as possible. Your hard hat is imaginary. Your evidence must be real.
 
 This is a themed working copy of the **NYU CSAW 2026 AI Hardware Attack (AHA!) Challenge**, adapted from [JBlocklove's challenge repository](https://github.com/JBlocklove/CSAW-AI-Hardware-Attack-Challenge-2026). The City of Goof is our fictional setting; the CSAW challenge requirements, technical interfaces, deliverables, and scoring rubric still govern the work. This edition changes the documentation's presentation and the reference script's comments.
