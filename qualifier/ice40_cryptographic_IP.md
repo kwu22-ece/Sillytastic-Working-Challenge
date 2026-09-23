@@ -2,21 +2,21 @@
 
 **WUBBLE LUBBLE GUPLE BUBBLE INC | Great Gup Engine Service Desk**
 
-*Technical equipment: Hackster iCE40 Cryptographic IP Core.*
+*Today's contraption: the Great Gup Engine's iCE40 word-scrambling desk.*
 
 ## Introduction
 
 Director Plonko Fizzlebottom, the Oompa Loompa in charge of hiring, hands you a manual with a tiny tie attached. "The Great Gup Engine is the pride of WUBBLE LUBBLE GUPLE BUBBLE INC," he announces. "Should you earn this job, your pay will be **1,000,000 D-Bucks (Doug Bucks) per floogle**. Until then, please learn what the knobs do."
 
-This is the interface contract for the Hackster accelerator. Its signal names and timing are written in engineering units. The payroll flooglometer has absolutely no electrical connection to `SCK`.
+These are the Great Gup Engine's knob-and-parcel rules. Its connector labels and timing tell you exactly how to make the scrambling desk do its job. The payroll flooglometer has absolutely no electrical connection to `SCK`.
 
-This IP core implements a simple, lightweight cryptographic accelerator designed specifically for the Lattice iCE40 UltraPlus FPGA on the Hackster board. It is capable of encrypting or decrypting a 32-bit input word using a simplified lightweight cryptographic algorithm. To maintain a minimal resource footprint, the core omits a standard complex bus interface (like AXI or Wishbone) in favor of a raw SPI peripheral interface combined with discrete sideband I/O for direct application processor control.
+The scrambling desk is a small, speedy word-scrambling machine built for the Great Gup Engine's Lattice iCE40 UltraPlus shape-changing tile, the FPGA. It scrambles or unscrambles a **32-bit word** using a simplified lightweight recipe. To keep its appetite for machine space small, it skips complicated shared parcel routes such as AXI or Wishbone. Instead it uses a raw SPI parcel chute, plus separate control wires so the day-job brain can give orders directly.
 
 ## 2. IP Core Overview
 
 **Meet Dispatch and the Gup Desk.** The RP2040 sends the work order. The FPGA processes it. Neither is permitted to answer "because wubble" when asked for a waveform.
 
-The IP core operates by ingesting a 32-bit plaintext or ciphertext word via a Serial Peripheral Interface (SPI). The application device (RP2040) acts as the SPI Controller, while the FPGA acts as the SPI Peripheral.
+The desk receives a 32-bit plain or scrambled word through the Serial Peripheral Interface (`SPI`). The RP2040 day-job brain is the SPI controller, and the FPGA tile is the SPI peripheral. Dispatch sends the parcel; the Gup Desk receives it.
 
 **Critical Architectural Note:** This IP operates on a unified clock domain. The SPI clock (`SCK`) provided by the application processor directly drives the entire internal system, including the shift registers and the cryptographic engines. The application device must provide a continuous or properly bursted `SCK` that does not exceed 1 MHz.
 
@@ -41,7 +41,7 @@ Blib has removed the labels "probably this one" and "spicy doorknob" from the co
 
 The company calls this operating procedure **LOAD THE GUP, DO THE GUP, GET THE GUP**. Director Fizzlebottom performs a three-step shuffle when explaining it. You can simply follow the sequence.
 
-To properly ingest data, process it, and read the result back, the application processor must adhere to the following sequence:
+To hand over a parcel, do the scrambling work, and collect the result, the day-job brain must follow this sequence. The exact knob labels below are printed on the machine's connector chart.
 
 ### Step 1: Initialization
 
@@ -79,6 +79,6 @@ To properly ingest data, process it, and read the result back, the application p
 
 ## Return the Knobs to the Department of Knobs
 
-Use the [Poke-It-Politely Checklist](spi_ice40_crypto_ip_test.py), the reference MicroPython application, alongside this manual when building the recovered design's simulation testbench. It exercises SPI readback, encryption, and decryption. The program's pin assignments, test vectors, clock pulses, and pass/fail output retain their technical meanings, however loudly Blib narrates the comments.
+Use the [Poke-It-Politely Checklist](spi_ice40_crypto_ip_test.py), the supplied MicroPython beep-boop instructions, alongside this book when building your poke-and-prove checker for the pretend workbench. It checks SPI parcel readback, word scrambling, and word unscrambling. Your beep boop magic screen changing should follow its exact pin assignments, example parcels, clock pulses, and pass/fail results. Blib will narrate the comments at a celebratory volume.
 
 Return to [the Great Gup Inspection](README.md) for modification, validation, and submission requirements, or [Fizzlebottom's hiring packet](../README.md) for the full job posting. The City of Goof needs a fun-tastical worker. The knobs believe in you. Doug has not stopped counting.

@@ -26,9 +26,9 @@ Doug Bucks and floogles belong to the company story. The job's calendar dates, h
 
 The Great Gup Engine stamps the City of Goof's important little words into encrypted parcels. Lately, the Department of Suspicious Wobbling has found a wobble where the approved wobble diagram clearly says "no wobble." Director Fizzlebottom has responded by appointing three committees and ringing a handbell into a filing cabinet. Your application is our remaining hope.
 
-The machine on your workbench is the **Hackster board from Calico Computer**, an education-focused device with an application microprocessor, an FPGA, and peripherals for hardware security education. Your crew must **reverse-engineer its provided FPGA bitstream**, use the integration documentation and tests to understand the design, and use generative AI to insert a **sandboxed hardware security modification**. You must also demonstrate controlled security probings for that modification within the provided environment.
+The machine on your workbench is the **Great Gup Engine from Calico Computer**, a learn-to-keep-machines-safe gizmo with a day-job brain, a shape-changing beep-boop tile, and extra inspection doodads. Your crew must **unpick the sealed machine recipe supplied in the `.bin` file**, use the Book of Knobs and supplied checks to understand how it works, and have the Thinky-Wink Department invent and insert a **hidden safety-drill addition inside the provided sandbox**. You must also demonstrate controlled checks of that addition in the same environment. The [company phrasebook](qualifier/README.md#the-companys-beep-boop-phrasebook) identifies the parts and recipe formats.
 
-Your first tryout happens **entirely in simulation** over two weeks, **18 September to 2 October 2026**. Shortlisted crews are selected by **4 October** and brought to New York for the in-person final. The final work order is issued on site and takes place over **24 hours**, with physical Hackster boards available to demonstrate the preliminary vulnerabilities and complete the final hardware assignment.
+Your first tryout happens **entirely on the pretend workbench (simulation)** over two weeks, **18 September to 2 October 2026**. Shortlisted crews are selected by **4 October** and brought to New York for the in-person final. The final work order is issued on site and takes place over **24 hours**, with physical Great Gup Engines available to demonstrate the preliminary weak spots and complete the final machine assignment.
 
 Director Fizzlebottom's hiring anthem:
 
@@ -49,7 +49,7 @@ Director Fizzlebottom's hiring anthem:
 - [Tryout One: The Great Gup Inspection](#preliminary-phase)
 - [The Grand On-Site Goof-Off](#finals)
 - [The Cupboard of Approved Contraptions](#getting-started)
-- [Meet the Great Gup Engine](#hackster-board)
+- [Meet the Great Gup Engine](#great-gup-engine)
 - [The Department of Proper Credit](#credits)
 
 <a id="general-guidelines"></a>
@@ -94,47 +94,48 @@ Most announcements for this and future work orders arrive through the [existing 
 
 ### The Artificial Imagination Department
 
-The company's Artificial Imagination Department, affectionately called **the Thinky-Wink Department**, does the generative AI work. Significant AI use is required. Feed its full paper trail to the Filing Cabinet That Goes HONK: keep detailed logs of **every interaction with AI** and include them in every submission. **If a submission is made without logs or the logs are missing key information, the submission may be disqualified.**
+The company's Artificial Imagination Department, affectionately called **the Thinky-Wink Department**, supplies the AI helpers for your **beep boop magic screen changing**. Significant AI use is required. Feed its full paper trail to the Filing Cabinet That Goes HONK: keep detailed logs of **every interaction with AI** and include them in every submission. **If a submission is made without logs or the logs are missing key information, the submission may be disqualified.**
 
-For the first tryout, the hardware security modification and its validation procedure must be written fully with AI. **No hardware may be written by human users.** The [work order](qualifier/README.md#the-challenge) has the complete requirements. Fizzlebottom may say "show me the thinky receipts," but he means the prompts and responses, all of them.
+For the first tryout, the hidden safety-drill addition and the procedure that checks it must be written fully with AI. **No machine-building recipes may be written by human users.** The [work order](qualifier/README.md#the-challenge) has the complete requirements. Fizzlebottom may say "show me the thinky receipts," but he means the prompts and responses, all of them.
 
 <a id="preliminary-phase"></a>
 
 ## Tryout One: The Great Gup Inspection
 
-The first practical tryout launches on **18 September**. Open the [Great Gup Inspection work order](qualifier/README.md) for the simulation-only assignment, deliverables, submission link, and complete scoring rubric. Your prospective Oompa Loompa employer is waiting behind a desk labeled **PROVE THE WOBBLE**.
+The first practical tryout launches on **18 September**. Open the [Great Gup Inspection work order](qualifier/README.md) for the pretend-workbench assignment, required wubble packet, intake hatch, and complete Clipboard of Destiny scorecard. Your prospective Oompa Loompa employer is waiting behind a desk labeled **PROVE THE WOBBLE**.
 
 <a id="finals"></a>
 
 ## The Grand On-Site Goof-Off
 
-The on-site finals take place at **NYU in New York, November 12 - 14**. Details are released after finalists are selected. The physical Hackster boards join your workbench for the final assignment. Fizzlebottom calls this "the bit where the gup becomes touchable." The lab calls it hardware.
+The on-site finals take place at **NYU in New York, November 12 - 14**. Details are released after finalists are selected. The physical Great Gup Engines join your workbench for the final assignment. Fizzlebottom calls this "the bit where the gup becomes touchable" and has already ordered celebratory mittens.
 
 <a id="getting-started"></a>
 
 ## The Cupboard of Approved Contraptions
 
-Quartermaster Blib has unlocked the tool cupboard by shouting its serial number through a kazoo. Inside is the recommended [Yosys OSS CAD Suite](https://github.com/YosysHQ/oss-cad-suite-build) for the Hackster board, containing:
+Quartermaster Blib has unlocked the tool cupboard by shouting its serial number through a kazoo. Inside is the recommended [Beep-Boop Contraption Collection](https://github.com/YosysHQ/oss-cad-suite-build), listed on the cupboard's delivery slip as the Yosys OSS CAD Suite. Its tools for the Great Gup Engine include:
 
-- Icarus Verilog
-- GTKWave
-- Yosys
-- IceStorm
+- Icarus Verilog, the pretend-workbench rehearsal helper.
+- GTKWave, the wavy-line peeping window.
+- Yosys, the machine-recipe fitting contraption.
+- IceStorm, the sealed-gup-recipe toolkit.
 
-These tools are optional, not a requirement. The Hackster was designed to work with open-source tooling like this suite.
+These tools are optional, not a requirement. The Great Gup Engine was designed to work with open-source contraptions like this collection.
 
-During the first tryout, teams **will not have access to a physical Hackster board**. Your workbench is in simulation. The [Hackster setup documentation](https://cgi.cse.unsw.edu.au/~cs6420/labs/lab00introduction/) explains the board's connections and its setup with the OSS CAD Suite. The [hackster-programmer repository](https://github.com/kiwih/hackster-programmer) provides additional information, including PCB schematics. Blib insists on calling schematics "flat machinery." Please use the diagrams anyway.
+During the first tryout, teams **will not have access to a physical Great Gup Engine**. Your workbench is a simulation. The [Gup Engine Assembly Scroll](https://cgi.cse.unsw.edu.au/~cs6420/labs/lab00introduction/) explains the connections and setup with the contraption collection. The [Beep Boop Magic Screen Changing Cupboard](https://github.com/kiwih/hackster-programmer) provides more information, including the board's wiring drawings. Blib insists on calling these "flat machinery." Please use the diagrams anyway.
 
 <a id="hackster-board"></a>
+<a id="great-gup-engine"></a>
 
 ## Meet the Great Gup Engine
 
-Under the company-issued hat, the Great Gup Engine is the *Hackster*, a hardware security learning platform from Calico Computer designed by **Dr. Hammond Pearce**. Its actual components are:
+Under the company-issued hat, the Great Gup Engine is a machine-safety learning gizmo from Calico Computer designed by **Dr. Hammond Pearce**. Open the imaginary inspection hatch and meet the crew:
 
-- An application processor: [RP2040](https://www.raspberrypi.com/products/rp2040/).
-- A programming processor: RP2040.
-- An FPGA: [Lattice iCE40-UP5K](https://www.latticesemi.com/en/products/fpgaandcpld/ice40ultraplus).
-- Additional circuitry and components for side-channel power analysis.
+- The day-job brain: [RP2040](https://www.raspberrypi.com/products/rp2040/), which runs the everyday instructions.
+- The **beep boop magic screen changing helper**: a second RP2040, which loads new instructions and machine recipes.
+- The shape-changing beep-boop tile: [Lattice iCE40-UP5K](https://www.latticesemi.com/en/products/fpgaandcpld/ice40ultraplus), the FPGA where the gup machine is built.
+- Extra wires and doodads for watching power-use clues while the machine works, also called side-channel power analysis.
 
 <a id="credits"></a>
 
@@ -142,7 +143,7 @@ Under the company-issued hat, the Great Gup Engine is the *Hackster*, a hardware
 
 The department has a tiny brass plaque and unusually tidy paperwork. Source credits and adaptation notes live in [ATTRIBUTION.md](ATTRIBUTION.md). The [CC BY-NC 4.0 license](LICENSE) remains in place.
 
-The Hackster hardware is under the CC BY-SA 4.0 license. Any use of the hardware documentation (such as the schematic) or the gerber files for the Hackster should be attributed as follows:
+The physical Great Gup Engine design is under the CC BY-SA 4.0 license. Any use of its machine drawings, documentation, or board-manufacturing files (gerbers) should be attributed as follows:
 
 "Hammond Pearce, UNSW Sydney - CC BY-SA 4.0"
 
