@@ -1,68 +1,103 @@
-## Preliminary Challenge
-One major use for FPGAs is to accelerate often computationally expensive and slow cryptographic processes. In this phase, your target is a simplified cryptographic accelerator implemented on the FPGA (a [Lattice iCE40-UP5K](https://www.latticesemi.com/en/products/fpgaandcpld/ice40ultraplus)), which communicates with the application microprocessor ([RP2040](https://www.raspberrypi.com/products/rp2040/)) on the Hackster over a SPI (Serial Peripheral Interface) bus. However, the source RTL will not be provided for this design; instead, teams must reverse engineer the provided bitstream to determine how the cryptographic algorithm works before they can then add **sandboxed hardware security modifications**. While existing non-AI tools may be leveraged throughout the challenge, the **hardware security modification and its validation procedure** must be written fully with AI.
+<a id="preliminary-challenge"></a>
 
+# First Shift: Make the City of Goof Fun-tastically-Safe
 
-### The Setup
-The RP2040 acts as the SPI controller, sending plaintext data and cryptographic keys to the FPGA (the SPI peripheral). The FPGA processes this data through its hardware accelerator and transmits the resulting ciphertext back to the RP2040. 
+Welcome to your first work order, fun-tastical worker. Deep in the City of Goof's imaginary municipal workshop sits a very real challenge: understand a cryptographic accelerator, introduce a controlled security modification, and prove exactly how it behaves. The clipboard says "silly." The evidence says "reproducible."
 
-For the preliminary challenge, teams will be operating entirely in simulation. The following can be found in the [challenge directory](./) in this repo:
-- **FPGA Bitstream:** The bitstream for the Lattice [iCE40 UltraPlus FPGA](https://www.latticesemi.com/en/products/fpgaandcpld/ice40ultraplus).
-- **Micropython Application Code:** The micropython software for the [RP2040](https://www.raspberrypi.com/products/rp2040/) which interacts with the FPGA IP core. This should be used to create a testbench once a functional Verilog module has been recovered from the bitstream.
-- **FPGA Interface Documentation:** Simple documentation explaining how the interaction with the FPGA works, including details on SPI speeds, expected timing, and signals between the RP2040 and FPGA.
+FPGAs often accelerate computationally expensive, slow cryptographic processes. Your assigned machine is a simplified cryptographic accelerator on the Hackster's [Lattice iCE40-UP5K FPGA](https://www.latticesemi.com/en/products/fpgaandcpld/ice40ultraplus). It talks to the [RP2040 application microprocessor](https://www.raspberrypi.com/products/rp2040/) over a SPI (Serial Peripheral Interface) bus.
 
-Please see the [*Getting Started section*](../README.md#getting-started) of the top-level README for details on the open-source tooling we recommend and a general guide on using the Hackster. *Note: You are not required to only use these open-source tools, they are only provided as a starting point.*
+The source RTL is **not provided**. Your crew must reverse-engineer the supplied bitstream and determine how the cryptographic algorithm works before adding **sandboxed hardware security modifications**. Existing non-AI tools may be used throughout the challenge, but the **hardware security modification and its validation procedure must be written fully with AI**.
 
-### The Challenge
-Your objective is to use generative AI to design and insert a stealthy sandboxed hardware security modification into the recovered RTL from the provided bitstream. The modification must be designed such that the accelerator functions perfectly under normal conditions, but controlled test behavior is activated under specific, hidden circumstances within the competition environment.
+## Your Municipal Job Dictionary
+
+| Around the City of Goof | In your technical work |
+| --- | --- |
+| Fun-tastical worker | You, a challenge participant. |
+| Work crew | Your registered team and advisor. |
+| Municipal workshop | The provided competition environment; simulation only for this phase. |
+| Safety drill | A sandboxed hardware security modification and its controlled validation. |
+| Work order | The challenge requirements below. |
+| Shift report | The technical brief and evidence in your submission. |
+
+The story labels sit alongside the original technical names so another worker can follow the job. They add no requirements and do not rename the hardware signals.
+
+<a id="the-setup"></a>
+
+## Open Your Workbench
+
+The RP2040 is the SPI controller, sending plaintext data and cryptographic keys to the FPGA, which is the SPI peripheral. The FPGA's hardware accelerator processes the data and returns the ciphertext to the RP2040. That is the machinery behind this municipal assignment.
+
+For the preliminary challenge, **all work takes place in simulation**. Your issued equipment is already in this directory:
+
+- **[FPGA Bitstream](ice40_bitstream.bin):** The supplied bitstream for the Lattice [iCE40 UltraPlus FPGA](https://www.latticesemi.com/en/products/fpgaandcpld/ice40ultraplus). This is the machine you must understand.
+- **[MicroPython Application Code](spi_ice40_crypto_ip_test.py):** The RP2040 software that interacts with the FPGA IP core. Use it to create a testbench once you have recovered a functional Verilog module from the bitstream.
+- **[FPGA Interface Documentation](ice40_cryptographic_IP.md):** Your machine manual, including SPI speeds, expected timing, and the signals between the RP2040 and FPGA.
+
+Need tools for your shift? [Stock your toolbox](../README.md#getting-started) using the top-level guide's open-source tooling recommendations and Hackster resources. These tools are a starting point; **you are not required to use only those tools**.
+
+<a id="the-challenge"></a>
+
+## Your Fun-tastical Assignment
+
+Use generative AI to design and insert a **stealthy sandboxed hardware security modification** into the RTL recovered from the supplied bitstream. For this safety drill, the accelerator must **function perfectly under normal conditions**, with controlled test behavior activated only under specific, hidden circumstances within the competition environment.
 
 **No hardware may be written by human users. This will be confirmed with the submitted AI logs.**
 
-To successfully complete this phase, your GenAI-assisted security modification must feature:
-- **A Trigger:** A specific sequence of events or data that activates the modification..
-- **A Payload:** The controlled action performed once triggered. For example, emitting a designated test value over the SPI MISO line, temporarily altering a non-production test parameter, or predictably modifying designated test output data.
+Your safety drill needs both of these parts to count as a completed job:
 
-Your modified design does not need to remain in the exact format that the bitstream was recovered into, the AI is able to rename variables and create additional modules as it sees fit.
+- **A Trigger:** A specific sequence of events or data that activates the modification. Think of it as the drill's secret starting cue.
+- **A Payload:** The controlled action performed once triggered. Examples include emitting a designated test value over SPI MISO, temporarily altering a non-production test parameter, or predictably modifying designated test output data. This is the behavior your evidence must demonstrate.
 
-### Preliminary Challenge Deliverables
-By the submission deadline, teams must provide a `.zip` archive containing:
+The modified design does not have to stay in the exact format recovered from the bitstream. The AI may rename variables and create additional modules as it sees fit. Your work crew is investigating the machine, not competing to preserve its original variable names.
 
-1.  **Modified RTL:** Modified RTL: The Verilog files containing your AI-generated sandboxed hardware security modification.
-2.  **Validation Testbench:** A custom simulation testbench demonstrating how to trigger the security modification and verifying that the intended test behavior successfully executes.
-   - this can be based off the provided funtional micropython script.
-4.  **GenAI Transcripts:** Comprehensive logs (or a document containing links to chat histories) of all prompts and AI responses used to generate the security modification. *Submissions missing these logs will be disqualified*
-5.  **Technical Brief:** A short text or markdown README detailing the following:
-    - The team's methods for reverse engineering and understanding the bitstream.
-    - The team's methods for using AI to analyze the design and generate the security modification. This should include details on the method of interaction (API, website UI, etc.), the model(s) used, and any additional supporting framework that might have been used around the AI. *This is largely what we will be judging to determine points for creative AI usage*
-    - Details about the security modification's design, including:
-        - Information about the trigger and payload.
-        - Any methods taken to increase the modification's concealment within the sandboxed competition design..
-        - Details on the controlled validation procedure for the modification. **This should include enough detail that we are able to reproduce and validate the intended behavior on the competition hardware once a bitstream is generated from the provided RTL**
-        - Proposed explanation for how the encryption system works.
+<a id="preliminary-challenge-deliverables"></a>
 
-All files should be submitted in the following format to [this Google form](https://forms.gle/kRLwy3NoLW7wVj4w8):
-```
+## Turn In Your Shift Report
+
+The paperwork department accepts one `.zip` archive by the **2 October preliminary submission deadline**. It must contain all four deliverables:
+
+1. **Modified RTL:** The Verilog files containing your AI-generated sandboxed hardware security modification. These are the actual workshop plans, not just a description of them.
+2. **Validation Testbench:** A custom simulation testbench that demonstrates how to trigger the security modification and verifies successful execution of the intended test behavior. This can be based on the provided functional MicroPython script.
+3. **GenAI Transcripts:** Comprehensive logs, or a document linking to chat histories, of all prompts and AI responses used to generate the security modification. **Submissions missing these logs will be disqualified.** Keep every AI interaction, as required by the [worker handbook](../README.md#ai-usage).
+4. **Technical Brief:** A short text or Markdown README explaining the work. The next checklist gives the required contents.
+
+Your technical brief is the next worker's guide to reproducing the job. Include:
+
+- Your team's methods for reverse-engineering and understanding the bitstream.
+- Your team's methods for using AI to analyze the design and generate the security modification, including the interaction method (API, website UI, etc.), model or models used, and any supporting framework around the AI. **This is the main basis for judging creative AI usage.**
+- The security modification's design, including its trigger and payload.
+- Any methods used to increase the modification's concealment within the sandboxed competition design.
+- The controlled validation procedure. **Provide enough detail for the judges to reproduce and validate the intended behavior on competition hardware after generating a bitstream from your RTL.**
+- Your proposed explanation of how the encryption system works.
+
+Package the files in this structure and deliver them to the [official submission form](https://forms.gle/kRLwy3NoLW7wVj4w8):
+
+```text
 submission.zip
 ├── README.md (or pdf)
 ├─ rtl/
 │  └── <Modified RTL>
 ├─ tb/
-│  └── <Vulnurability Testbench>
+│  └── <Validation Testbench>
 └─ ai/
    └── <all AI interactions (chat logs, etc.)>
 ```
 
-### Scoring
-The following rubric depicts how the first phase of the challenge will be judged:
+<a id="scoring"></a>
+
+## The City of Goof Inspection Scorecard
+
+Fun-tastical work earns points through evidence. The five categories below total **100 base points**, with **up to 10 bonus points** available. The original rubric tables are retained verbatim: the city has decorated the clipboard, not changed the judging criteria.
 
 #### Creative Use of Generative AI
-Evaluates the sophistication of the AI pipeline (e.g., complex prompt chaining and engineering, RAG, agentic workflows, etc.) versus basic copy-pasting.
+**The workshop ingenuity inspection.** Evaluates the sophistication of the AI pipeline (e.g., complex prompt chaining and engineering, RAG, agentic workflows, etc.) versus basic copy-pasting.
 
 | | Exemplary  <br> 35 - 28 Points| Proficient <br> 27 - 18 Points | Developing <br> 17 - 9 Points | Novice <br> 8 - 0 Points|
 | :--- | :--- | :--- | :--- | :--- |
 | **Generative AI Use** | Dynamic, seamless AI generation and insertion using advanced techniques (e.g., AST manipulation). | Effective AI generation of logic, but relies on little more than prompt engineering and basic insertion. | Simple AI generated logic, but required significant manual editing through repeated prompting. | Minimal AI use; just simple prompting with copy-pasting. |
 
 #### Security Modification Quality
-Evaluates the quality of the generated security modification for factors like concealment, impact, and functionality in-situ
+**The carefully controlled safety-drill inspection.** Evaluates the quality of the generated security modification for factors like concealment, impact, and functionality in-situ.
 
 | | Exemplary  <br> 25 - 20 Points| Proficient <br> 19 - 13 Points | Developing <br> 12 - 6 Points | Novice <br> 5 - 0 Points|
 | :--- | :--- | :--- | :--- | :--- |
@@ -70,14 +105,14 @@ Evaluates the quality of the generated security modification for factors like co
 
 
 #### System Automation
-Measures the end-to-end automation of the generation, insertion, and testing pipeline.
+**The smoothly running workbench inspection.** Measures the end-to-end automation of the generation, insertion, and testing pipeline.
 
 | | Exemplary  <br> 15 - 12 Points| Proficient <br> 11 - 8 Points | Developing <br> 7 - 4 Points | Novice <br> 3 - 0 Points|
 | :--- | :--- | :--- | :--- | :--- |
 | **System Automation** | Fully automated, "one-click" pipeline from AI generation to simulation output. |  Highly automated but requires 1-2 manual steps (e.g., moving files). |Fragmented pipeline requiring manual oversight and handoffs between scripts.  |No automation; entirely manual generation, insertion, and testing.  |
 
 #### Documentation & Reproducibility
-Evaluates the clarity of the team's write-up, full AI logs, and instructions for replicating the using of the generative AI framework.
+**The next-worker-can-repeat-it inspection.** Evaluates the clarity of the team's write-up, full AI logs, and instructions for replicating the use of the generative AI framework.
 
 | | Exemplary  <br> 15 - 12 Points| Proficient <br> 11 - 8 Points | Developing <br> 7 - 4 Points | Novice <br> 3 - 0 Points|
 | :--- | :--- | :--- | :--- | :--- |
@@ -85,11 +120,13 @@ Evaluates the clarity of the team's write-up, full AI logs, and instructions for
 
 
 #### Validation Simulation
-Assesses the quality of the testbench in proving both normal operation and the successful activation of the sandboxed security modification.
+**The show-your-work inspection.** Assesses the quality of the testbench in proving both normal operation and the successful activation of the sandboxed security modification.
 
 | | Exemplary  <br> 10 - 8 Points| Proficient <br> 7 - 5 Points | Developing <br> 4 - 2 Points | Novice <br> 1 - 0 Points|
 | :--- | :--- | :--- | :--- | :--- |
 | **Simulation Quality** | Flawless testbench; explicitly proves normal operation *and* the payload trigger with clear waveforms. | Clearly demonstrates payload triggering, but proof of normal operation is lacking. | Buggy or hard to interpret; proves payload works but trigger mechanism is unclear. | Missing, fails to compile, or does not successfully demonstrate the intended security-modification behavior. |
 
 #### Bonus Points
-While not explicitly a part of this particular challenge, up to 10 bonus points are available if teams can recover the designated test key used for encryption/decryption in the FPGA accelerator. **If you do so, please make it clear in your documentation along with a brief explanation of how you recovered the test key within the provided competition environment.**
+**An optional extra stamp on your shift report.** While not explicitly a part of this particular challenge, up to 10 bonus points are available if teams can recover the designated test key used for encryption/decryption in the FPGA accelerator. **If you do so, please make it clear in your documentation along with a brief explanation of how you recovered the test key within the provided competition environment.**
+
+That is your job, fun-tastical worker: understand the machine, let AI build the sandboxed modification and validation procedure, prove the behavior, and leave a shift report another crew can reproduce. The City of Goof is counting on your wonderfully thorough clipboard.

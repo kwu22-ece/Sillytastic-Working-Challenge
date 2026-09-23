@@ -1,3 +1,6 @@
+# City of Goof machine check: the fun-tastical worker's reference application.
+# Silly Land edition: comments are themed; executable behavior is unchanged.
+
 import machine
 import binascii
 
@@ -20,7 +23,7 @@ def main():
 
     spi = machine.SoftSPI(baudrate=50000, polarity=0, phase=0, bits=8, firstbit=machine.SPI.MSB, sck=SCK, mosi=MOSI, miso=MISO)
 
-    #reset the AES core
+    # Clock in: reset the cryptographic core for this shift.
 
     RST_N.value(0)
     SCK.value(1)
@@ -29,12 +32,12 @@ def main():
     SCK.value(1)
     SCK.value(0)
 
-    # engage the input SPI
+    # The work order's original plaintext and expected ciphertext.
     plaintext = bytearray([0x59, 0xC3, 0x59, 0xC3])
     ciphertext = bytearray([0x9C, 0xD8, 0x43, 0x92])
     
     #############################################################
-    ## Test SPI readback
+    ## Inspection 1: check the municipal SPI delivery route.
     #############################################################
     txdata = plaintext
     rxdata = bytearray(4)
@@ -42,7 +45,7 @@ def main():
     spi.write(txdata)
     NORM_CS_N.value(1)
 
-    #do a test readout
+    # Read back the delivery before sending work to the accelerator.
     NORM_CS_N.value(0)
     spi.write_readinto(txdata, rxdata)
     NORM_CS_N.value(1)
@@ -54,7 +57,7 @@ def main():
         return
        
     #############################################################
-    ## Test encryption
+    ## Inspection 2: put the municipal word-scrambler to work (encryption).
     #############################################################
     ENC_DEC.value(0) # encrypt
 
@@ -69,8 +72,7 @@ def main():
         print("Error: IP core did not go busy")
         return
     
-    #run 3 clock cycles to finish the system
-    # (4 clock cycles total:
+    # Give the machine the reference script's seven additional clock cycles.
     for i in range(7):
         SCK.value(1)
         SCK.value(0)
@@ -81,7 +83,7 @@ def main():
         print("Error: IP core did not finish")
         return
     
-    #do the readout
+    # Collect the finished word for the inspection clipboard.
     NORM_CS_N.value(0)
     spi.write_readinto(txdata, rxdata)
     NORM_CS_N.value(1)
@@ -91,11 +93,11 @@ def main():
         print("Encryption value correct:", binascii.hexlify(rxdata))
 
     #############################################################
-    ## Test decryption
+    ## Inspection 3: recover the original work order (decryption).
     #############################################################
     ENC_DEC.value(1) # decrypt
 
-    #reset the AES core
+    # Reset the cryptographic core before the next municipal job.
 
     RST_N.value(0)
     SCK.value(1)
@@ -115,8 +117,7 @@ def main():
     SCK.value(0)
     START.value(0)
     
-    #run 3 clock cycles to finish the system
-    # (4 clock cycles total:
+    # Give the machine the reference script's seven additional clock cycles.
     for i in range(7):
         SCK.value(1)
         SCK.value(0)
@@ -127,7 +128,7 @@ def main():
         print("Error: IP core did not finish")
         return
     
-    #do the readout
+    # Collect the recovered word and check it against the original work order.
     NORM_CS_N.value(0)
     spi.write_readinto(txdata, rxdata)
     NORM_CS_N.value(1)
