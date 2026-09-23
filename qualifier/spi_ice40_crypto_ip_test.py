@@ -1,5 +1,7 @@
-# City of Goof machine check: the fun-tastical worker's reference application.
-# Silly Land edition: comments are themed; executable behavior is unchanged.
+# WUBBLE LUBBLE GUPLE BUBBLE INC: THE POKE-IT-POLITELY CHECKLIST.
+# Director Plonko Fizzlebottom, Oompa Loompa employer, requests a gup inspection.
+# Get the job: 1,000,000 D-Bucks (Doug Bucks) per floogle of Silly Land time.
+# Comments have joined Goof Time; the executable reference behavior is unchanged.
 
 import machine
 import binascii
@@ -23,7 +25,7 @@ def main():
 
     spi = machine.SoftSPI(baudrate=50000, polarity=0, phase=0, bits=8, firstbit=machine.SPI.MSB, sck=SCK, mosi=MOSI, miso=MISO)
 
-    # Clock in: reset the cryptographic core for this shift.
+    # Ceremonially un-wobble the cryptographic core. Fizzlebottom rings a bell.
 
     RST_N.value(0)
     SCK.value(1)
@@ -32,12 +34,13 @@ def main():
     SCK.value(1)
     SCK.value(0)
 
-    # The work order's original plaintext and expected ciphertext.
+    # Two exact gup parcels: original plaintext and expected ciphertext.
+    # Blib has been instructed not to substitute sandwich fillings.
     plaintext = bytearray([0x59, 0xC3, 0x59, 0xC3])
     ciphertext = bytearray([0x9C, 0xD8, 0x43, 0x92])
     
     #############################################################
-    ## Inspection 1: check the municipal SPI delivery route.
+    ## WUBBLE CHECK: can the tiny SPI parcel chute return the correct parcel?
     #############################################################
     txdata = plaintext
     rxdata = bytearray(4)
@@ -45,7 +48,7 @@ def main():
     spi.write(txdata)
     NORM_CS_N.value(1)
 
-    # Read back the delivery before sending work to the accelerator.
+    # Ask Dispatch to return the parcel before the Gup Desk gets involved.
     NORM_CS_N.value(0)
     spi.write_readinto(txdata, rxdata)
     NORM_CS_N.value(1)
@@ -57,7 +60,7 @@ def main():
         return
        
     #############################################################
-    ## Inspection 2: put the municipal word-scrambler to work (encryption).
+    ## LUBBLE CHECK: the Gup Desk encrypts the incoming parcel.
     #############################################################
     ENC_DEC.value(0) # encrypt
 
@@ -72,7 +75,7 @@ def main():
         print("Error: IP core did not go busy")
         return
     
-    # Give the machine the reference script's seven additional clock cycles.
+    # Seven additional SCK cycles, as supplied. Payroll floogles do not count.
     for i in range(7):
         SCK.value(1)
         SCK.value(0)
@@ -83,7 +86,7 @@ def main():
         print("Error: IP core did not finish")
         return
     
-    # Collect the finished word for the inspection clipboard.
+    # Collect the encrypted gup for Fizzlebottom's Clipboard of Destiny.
     NORM_CS_N.value(0)
     spi.write_readinto(txdata, rxdata)
     NORM_CS_N.value(1)
@@ -93,11 +96,11 @@ def main():
         print("Encryption value correct:", binascii.hexlify(rxdata))
 
     #############################################################
-    ## Inspection 3: recover the original work order (decryption).
+    ## GUPLE CHECK: un-gup the parcel by decrypting it back to the original.
     #############################################################
     ENC_DEC.value(1) # decrypt
 
-    # Reset the cryptographic core before the next municipal job.
+    # Un-wobble the core again. The bell has become a little overenthusiastic.
 
     RST_N.value(0)
     SCK.value(1)
@@ -117,7 +120,7 @@ def main():
     SCK.value(0)
     START.value(0)
     
-    # Give the machine the reference script's seven additional clock cycles.
+    # Seven additional SCK cycles, as supplied. Doug may count along quietly.
     for i in range(7):
         SCK.value(1)
         SCK.value(0)
@@ -128,7 +131,7 @@ def main():
         print("Error: IP core did not finish")
         return
     
-    # Collect the recovered word and check it against the original work order.
+    # BUBBLE CHECK: compare the recovered word with the original gup parcel.
     NORM_CS_N.value(0)
     spi.write_readinto(txdata, rxdata)
     NORM_CS_N.value(1)
